@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:market_inventory/pages/homa_page.dart';
+import 'package:market_inventory/src/pages/homa_page.dart';
 
 void main() {
   runApp(MyApp());

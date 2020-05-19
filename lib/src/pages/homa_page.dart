@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:market_inventory/widgets/product-card.dart';
+import 'package:market_inventory/src/widgets/product-card.dart';
 
 class HomePage extends StatelessWidget {
   @override
