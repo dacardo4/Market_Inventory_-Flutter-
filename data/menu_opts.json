@@ -1,0 +1,17 @@
+{
+    "nombreApp" : "Componentes",
+    "products" : [
+        {
+            "name" : "nombre001",
+            "quantity" : "003"
+        },
+        {
+            "name" : "nombre002",
+            "quantity" : "004"
+        },
+        {
+            "name" : "nombre003",
+            "quantity" : "005"
+        }
+    ]
+}
