@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:market_inventory/src/widgets/text.dart';
 
 class ProductCard extends StatelessWidget {
+  final String nameProduct;
+  final int quantityStockProduct;
+  final int quantityBuyProduct;
+  ProductCard({this.nameProduct, this.quantityStockProduct, this.quantityBuyProduct});
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -11,124 +17,74 @@ class ProductCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: Column(
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                flex: 3,
-                child: FadeInImage(
-                  image: NetworkImage('https://www.caracteristicas.co/wp-content/uploads/2018/10/galaxias-origen-e1538505946757.jpg'),
-                  placeholder: AssetImage('assets/original.gif'),
-                  fadeInDuration: Duration( milliseconds: 200),
-                  //width: 0.1,
-                  height: 150.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Expanded(
-                flex: 7,
-                child: Container(
-                  height: 150,
-                  color: Colors.yellow,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Text('nombre'),
-                      Text(''),
-                      Text('Cantidad'),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+          Padding(
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: informationSection(),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              FlatButton(
-                onPressed: () {},
-                child: Text('Editar'),
-              ),
-              FlatButton(
-                onPressed: () {},
-                child: Icon(Icons.edit),
-              ),
-            ],
-          ),
+          buttonsSection(),
         ],
+      ),
+    );
+  }
+
+  Widget informationSection() {
+    return Row(
+      children: <Widget>[
+        imageExpanded(),
+        infoExpanded(),
+      ],
+    );
+  }
+
+  Widget imageExpanded() {
+    return Expanded(
+      flex: 3,
+      child: FadeInImage(
+        //image: NetworkImage('https://www.caracteristicas.co/wp-content/uploads/2018/10/galaxias-origen-e1538505946757.jpg'),
+        image: AssetImage('assets/original.gif'),
+        placeholder: AssetImage('assets/original.gif'),
+        fadeInDuration: Duration( milliseconds: 200),
+        width: 100.0,
+        height: 100.0,
+        fit: BoxFit.cover,
       ),
     );
   }
   
-  Widget _cardTipo1() {
-    return Card(
-      elevation: 10.0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0)
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Column(
-        children: <Widget>[
-          ListTile(
-            leading: Icon(Icons.photo_album, color: Colors.blue),
-            title: Text('Titulo de la Card'),
-            subtitle: Text('Aqui osiudhjfgedksgois  ierjgojerhg  ejkgoerig eroj tieoríg e erigujoier ij gk e g0ire i eo ertpo jg e eori goe goíer uoei´r góij goiaeru guoisertjg oisreg eoi geriu gre '),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              FlatButton(
-                onPressed: () {},
-                child: Text('Cancelar'),
-              ),
-              FlatButton(
-                onPressed: () {},
-                child: Text('Ok'),
-              ),
-            ],
-          ),
-        ],
+  Widget infoExpanded() {
+    return Expanded(
+      flex: 7,
+      child: Container(
+        //height: 150,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            genericText(nameProduct, 0xff473bf0, FontWeight.w900, 40.0),
+            Text(''),
+            genericText('Stock: $quantityStockProduct', 0xff1e96fc, FontWeight.normal, 20.0),
+            genericText('Comprar: $quantityBuyProduct', 0xff1e96fc, FontWeight.normal, 20.0),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _cardTipo2() {
-    final card = Container(
-      child: Column(
-        children: <Widget>[
-          FadeInImage(
-            image: NetworkImage('https://www.caracteristicas.co/wp-content/uploads/2018/10/galaxias-origen-e1538505946757.jpg'),
-            placeholder: AssetImage('assets/original.gif'),
-            fadeInDuration: Duration( milliseconds: 200),
-            height: 300.0,
-            fit: BoxFit.cover,
-          ),
-          Container(
-            padding: EdgeInsets.all(10.0),
-            child: Text ('Descripcion de la imagen'),
-          ),
-        ],
-      ),
-    );
-
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
-        color: Colors.white,
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 10.0,
-            spreadRadius: 2.0,
-            offset: Offset(2.0, 10.0)
-          ),
-        ],
-        //color: Colors.red,
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20.0),
-        child: card,
-      ),
+  Widget buttonsSection() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        FlatButton(
+          onPressed: () {},
+          child: Text('Editar'),
+        ),
+        FlatButton(
+          onPressed: () {},
+          child: Icon(Icons.edit),
+        ),
+      ],
     );
   }
+
 }
+
