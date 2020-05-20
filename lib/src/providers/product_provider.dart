@@ -1,11 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-/// 1e96fc
-/// ffa9e7
-/// 473bf0
-/// ff84e8
-/// 414361
 final String url = '';
 
 class _ProductProvider {
