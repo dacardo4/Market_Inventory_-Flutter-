@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market_inventory/src/providers/quantity_provider.dart';
 
 class UploadProductComponent extends StatefulWidget {
   @override
@@ -8,7 +9,8 @@ class UploadProductComponent extends StatefulWidget {
 class _UploadProductComponentState extends State<UploadProductComponent> {
   int _productInStock = 0;
   int _producToBuy = 0;
-  String _productName = '';
+  TextEditingController _productName = TextEditingController();
+  //TextEditingController emailController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,6 +36,7 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
       color: Colors.white,
       width: MediaQuery.of(context).size.width,
       child: TextField(
+        controller: _productName,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: 'Ingresa el nombre del producto'
@@ -137,7 +140,8 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
   }
 
   void _sendData() {
-
+    if (_productName.text == '') print('VACIO!');
+    else postProductProvider.postData(_productName.text, 1, 0, 0, _productInStock, _producToBuy);
   }
 
 }
