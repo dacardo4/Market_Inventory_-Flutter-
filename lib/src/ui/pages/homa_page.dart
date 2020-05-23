@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:market_inventory/src/ui/components/cardComponent.dart';
 import 'package:market_inventory/src/ui/components/listComponent.dart';
+import 'package:market_inventory/src/ui/components/uploadProductComponent.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,6 +16,7 @@ class _HomeState extends State<HomePage> {
   List<Widget> _children = [
     CardComponent(),
     ListComponent(),
+    UploadProductComponent(),
   ];
 
   @override
@@ -30,8 +32,9 @@ class _HomeState extends State<HomePage> {
         selectedFontSize: 10,
         unselectedFontSize: 10,
         items: [
-          myBottomNavigationBarItem('Inventario', Icons.featured_play_list),
-          myBottomNavigationBarItem('Comprar', Icons.battery_unknown),
+          myBottomNavigationBarItem('Inventario', Icons.apps),
+          myBottomNavigationBarItem('Comprar', Icons.assignment),
+          myBottomNavigationBarItem('Registrar', Icons.backup),
         ],
       ),
       body: _children[_currentIndex],
