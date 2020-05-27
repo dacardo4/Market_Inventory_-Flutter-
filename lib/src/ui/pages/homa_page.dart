@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:market_inventory/src/ui/components/cardComponent.dart';
 import 'package:market_inventory/src/ui/components/listComponent.dart';
 import 'package:market_inventory/src/ui/components/uploadProductComponent.dart';
+import 'package:market_inventory/src/widgets/checkboxlist2_widget.dart';
+import 'package:market_inventory/src/widgets/checkboxlist_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,7 +17,9 @@ class _HomeState extends State<HomePage> {
   int _currentIndex = 0;
   List<Widget> _children = [
     CardComponent(),
-    ListComponent(),
+    MyCheckBoxListWidget(),
+    MyCheckBoxListWidget2(),
+    //ListComponent(),
     UploadProductComponent(),
   ];
 
@@ -34,6 +38,7 @@ class _HomeState extends State<HomePage> {
         items: [
           myBottomNavigationBarItem('Inventario', Icons.apps),
           myBottomNavigationBarItem('Comprar', Icons.assignment),
+          myBottomNavigationBarItem('Comprar2', Icons.assignment),
           myBottomNavigationBarItem('Registrar', Icons.backup),
         ],
       ),
