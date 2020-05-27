@@ -1,24 +1,17 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
-final String url = '';
+import 'package:market_inventory/src/utils/constants.dart';
 
 class _ProductProvider {
   List<dynamic> data = [];
 
-  _ProductProvider() {
-    getData();
-  }
+  _ProductProvider();
 
-  Future<List<dynamic>> getData() async {
-    final answer = await http.get('https://market-inventory.herokuapp.com/api/products');
-    if (answer.statusCode == 200) {
-      data = json.decode(answer.body);
-    } else {
-      print('Status Error no 200');
-    }
+  Future<List<dynamic>> getAllProducts() async {
+    final answer = await http.get(Constants.urlBack+'products');
+    if (answer.statusCode == 200) data = json.decode(answer.body);
+    else  data = []; //print('Status Error no 200');
     return data;
   }
 }
-
 final productProvider = new _ProductProvider();
