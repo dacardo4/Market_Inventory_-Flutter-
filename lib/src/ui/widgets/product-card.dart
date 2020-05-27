@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:market_inventory/src/widgets/text.dart';
+import 'package:market_inventory/src/ui/widgets/text.dart';
 
 class ProductCard extends StatelessWidget {
   final String nameProduct;

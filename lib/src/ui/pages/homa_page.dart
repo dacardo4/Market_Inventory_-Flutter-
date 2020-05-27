@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:market_inventory/src/ui/components/cardComponent.dart';
-import 'package:market_inventory/src/ui/components/listComponent.dart';
 import 'package:market_inventory/src/ui/components/uploadProductComponent.dart';
-import 'package:market_inventory/src/widgets/checkboxlist2_widget.dart';
-import 'package:market_inventory/src/widgets/checkboxlist_widget.dart';
+import 'package:market_inventory/src/ui/widgets/checkboxlist2_widget.dart';
+import 'package:market_inventory/src/ui/widgets/checkboxlist_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
