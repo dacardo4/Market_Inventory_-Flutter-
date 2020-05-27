@@ -12,8 +12,7 @@ class CardComponent extends StatelessWidget {
 
   Widget _myList() {
     return FutureBuilder(
-      //future: productProvider.getData(),
-      future: getQuantityProvider.getData(),
+      future: quantityProvider.getAllQuantityData(),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         return ListView(

@@ -31,7 +31,7 @@ class _MyCheckBoxListWidgetState extends State<MyCheckBoxListWidget> {
   Widget _myList() {
     return FutureBuilder(
       //future: productProvider.getData(),
-      future: getQuantityshoppingListProvider.getData(),
+      future: quantityProvider.getQuantityShoppingList(),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         return ListView(

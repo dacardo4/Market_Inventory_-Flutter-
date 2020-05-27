@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:market_inventory/src/providers/quantity_provider.dart';
-import 'package:market_inventory/src/ui/components/cardComponent.dart';
-import 'package:market_inventory/src/widgets/product-card.dart';
 
 class ListComponent extends StatelessWidget {
   @override
@@ -14,7 +12,7 @@ class ListComponent extends StatelessWidget {
   Widget _myList() {
     return FutureBuilder(
       //future: productProvider.getData(),
-      future: getQuantityshoppingListProvider.getData(),
+      future: quantityProvider.getQuantityShoppingList(),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         return ListView(
@@ -30,7 +28,7 @@ class ListComponent extends StatelessWidget {
     final List<Widget> opciones = [];
     data.forEach( (opt) {
       name = opt['quantityToBuy'].toString() + ' - ' + opt['product']['productName'];
-      final widgetTemp = Container(
+      final contTemp = Container(
         height: 50,
         color: Colors.amber[100],
         child: Center(
@@ -43,32 +41,9 @@ class ListComponent extends StatelessWidget {
           ),
         ),
       );
-      ProductCard(
-        nameProduct: opt['product']['productName'],
-        quantityStockProduct: opt['quantityInStock'],
-        quantityBuyProduct: opt['quantityToBuy']
-      );
-      opciones..add(widgetTemp)
+      opciones..add(contTemp)
               ..add(Divider());
     });
-    // opciones..add(Container(
-    //                 height: 50,
-    //                 color: Colors.amber[600],
-    //                 child: const Center(child: Text('Entry A')),
-    //               )
-    //             )
-    //         ..add(Container(
-    //                 height: 50,
-    //                 color: Colors.amber[500],
-    //                 child: const Center(child: Text('Entry B')),
-    //               )
-    //             )
-    //         ..add(Container(
-    //             height: 50,
-    //             color: Colors.amber[100],
-    //             child: const Center(child: Text('Entry C')),
-    //           ),
-    //         );
     return opciones;
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:market_inventory/src/providers/quantity_provider.dart';
+import 'package:market_inventory/src/providers/product_provider.dart';
 
 class UploadProductComponent extends StatefulWidget {
   @override
@@ -141,7 +141,7 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
 
   void _sendData() {
     if (_productName.text == '') print('VACIO!');
-    else postProductProvider.postData(_productName.text, 1, 0, 0, _productInStock, _producToBuy);
+    else productProvider.postProducts(_productName.text, 1, 0, 0, _productInStock, _producToBuy);
   }
 
 }
