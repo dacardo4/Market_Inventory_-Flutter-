@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market_inventory/src/providers/quantity_provider.dart';
-import 'package:market_inventory/src/ui/widgets/product-card.dart';
+import 'package:market_inventory/src/ui/widgets/productCard_widget.dart';
 
 class CardComponent extends StatelessWidget {
   BuildContext generalContext;
