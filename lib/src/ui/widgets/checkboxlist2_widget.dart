@@ -11,9 +11,11 @@ class MyCheckBoxListWidget2 extends StatefulWidget {
 
 class _MyCheckBoxListWidget2State extends State<MyCheckBoxListWidget2> {
   var _isSelected = [];
+  BuildContext generalContext;
 
   @override
   Widget build(BuildContext context) {
+    generalContext = context;
     return Center(
       child: _myList(),
     );
@@ -32,7 +34,7 @@ class _MyCheckBoxListWidget2State extends State<MyCheckBoxListWidget2> {
   Widget _myList() {
     return FutureBuilder(
       //future: productProvider.getData(),
-      future: quantityProvider.getQuantityShoppingList(),
+      future: quantityProvider.getQuantityShoppingList(generalContext),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         return ListView(

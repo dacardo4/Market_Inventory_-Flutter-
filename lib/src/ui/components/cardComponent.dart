@@ -3,8 +3,10 @@ import 'package:market_inventory/src/providers/quantity_provider.dart';
 import 'package:market_inventory/src/ui/widgets/product-card.dart';
 
 class CardComponent extends StatelessWidget {
+  BuildContext generalContext;
   @override
   Widget build(BuildContext context) {
+    generalContext = context;
     return Center(
       child: _myList(),
     );
@@ -12,7 +14,7 @@ class CardComponent extends StatelessWidget {
 
   Widget _myList() {
     return FutureBuilder(
-      future: quantityProvider.getAllQuantityData(),
+      future: quantityProvider.getAllQuantityData(generalContext),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         return ListView(
@@ -34,5 +36,56 @@ class CardComponent extends StatelessWidget {
               ..add(Divider());
     });
     return opciones;
+  }
+
+  Widget myAlert() {
+    return AlertDialog(
+      title: Text('AlertDialog Title'),
+      content: SingleChildScrollView(
+        child: ListBody(
+          children: <Widget>[
+            Text('This is a demo alert dialog.'),
+            Text('Would you like to approve of this message?'),
+          ],
+        ),
+      ),
+      actions: <Widget>[
+        FlatButton(
+          child: Text('Approve'),
+          onPressed: () {
+            Navigator.of(generalContext).pop();
+          },
+        ),
+      ],
+    );
+  }
+
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: generalContext,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('AlertDialog Title'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('This is a demo alert dialog.'),
+                Text('Would you like to approve of this message?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Approve'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

@@ -10,16 +10,18 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
   int _productInStock = 0;
   int _producToBuy = 0;
   TextEditingController _productName = TextEditingController();
+  BuildContext generalContext;
   //TextEditingController emailController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
+    generalContext = context;
     return Container(
       padding: EdgeInsets.only(top: 80),
       width: MediaQuery.of(context).size.width,
       color: Colors.cyan,
       child: Column(
         children: <Widget>[
-          nameInput(context),
+          nameInput(),
           tittleButtons('Cantidad en Stock'),
           stockInput(),
           tittleButtons('Cantidad a comprar'),
@@ -30,11 +32,11 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
     );
   }
 
-  Widget nameInput(BuildContext context) {
+  Widget nameInput() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
       color: Colors.white,
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(generalContext).size.width,
       child: TextField(
         controller: _productName,
         decoration: InputDecoration(
@@ -141,12 +143,7 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
 
   void _sendData() {
     if (_productName.text == '') print('VACIO!');
-    else productProvider.postProducts(_productName.text, 1, 0, 0, _productInStock, _producToBuy);
+    else productProvider.postProducts(generalContext, _productName.text, 1, 0, 0, _productInStock, _producToBuy);
   }
 
 }
-
-// var details = new Map(); 
-//    details['Usrname'] = 'admin'; 
-//    details['Password'] = 'admin@123'; 
-//    print(details); 
