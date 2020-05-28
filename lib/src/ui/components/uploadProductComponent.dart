@@ -11,7 +11,7 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
   int _producToBuy = 0;
   TextEditingController _productName = TextEditingController();
   BuildContext generalContext;
-  //TextEditingController emailController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     generalContext = context;
@@ -49,7 +49,6 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
 
   Widget stockInput() {
     return Container(
-      //color: Colors.green,
       child: Center(
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -65,7 +64,6 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
 
   Widget toBuyInput() {
     return Container(
-      //color: Colors.yellow,
       child: Center(
         child: Row(
           mainAxisSize: MainAxisSize.min,

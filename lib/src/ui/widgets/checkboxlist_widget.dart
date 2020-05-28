@@ -18,21 +18,10 @@ class _MyCheckBoxListWidgetState extends State<MyCheckBoxListWidget> {
     return Center(
       child: _myList(),
     );
-    // return LabeledCheckbox(
-    //   label: 'This is the label text',
-    //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-    //   value: _isSelected,
-    //   onChanged: (bool newValue) {
-    //     setState(() {
-    //       _isSelected = newValue;
-    //     });
-    //   },
-    // );
   }
 
   Widget _myList() {
     return FutureBuilder(
-      //future: productProvider.getData(),
       future: quantityProvider.getQuantityShoppingList(generalContext),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
@@ -51,19 +40,6 @@ class _MyCheckBoxListWidgetState extends State<MyCheckBoxListWidget> {
       var index = data.indexOf(opt);
       _isSelected.add(false);
       name = opt['quantityToBuy'].toString() + ' - ' + opt['product']['productName'];
-      // final contTemp = Container(
-      //   height: 50,
-      //   color: Colors.amber[100],
-      //   child: Center(
-      //     child: Text(
-      //       "$name",
-      //       style: TextStyle(
-      //         fontStyle: FontStyle.normal,
-      //         fontSize: 20,
-      //       )
-      //     ),
-      //   ),
-      // );
       final contTemp2 = LabeledCheckbox(
         label: name,
         padding: const EdgeInsets.symmetric(horizontal: 20.0),

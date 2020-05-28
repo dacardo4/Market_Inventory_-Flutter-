@@ -18,7 +18,6 @@ class _QuantityProvider {
       data = [];
       showMyInformationAlert(generalContext, 'error');
     }
-    showMyInformationAlert(generalContext, 'postProducts');
     return data;
   }
 

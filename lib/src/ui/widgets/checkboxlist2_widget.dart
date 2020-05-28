@@ -19,21 +19,10 @@ class _MyCheckBoxListWidget2State extends State<MyCheckBoxListWidget2> {
     return Center(
       child: _myList(),
     );
-    // return LabeledCheckbox(
-    //   label: 'This is the label text',
-    //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-    //   value: _isSelected,
-    //   onChanged: (bool newValue) {
-    //     setState(() {
-    //       _isSelected = newValue;
-    //     });
-    //   },
-    // );
   }
 
   Widget _myList() {
     return FutureBuilder(
-      //future: productProvider.getData(),
       future: quantityProvider.getQuantityShoppingList(generalContext),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
@@ -51,16 +40,6 @@ class _MyCheckBoxListWidget2State extends State<MyCheckBoxListWidget2> {
     data.sort((a, b) {
       return a['product']['productName'].toString().toLowerCase().compareTo(b['product']['productName'].toString().toLowerCase());
     });  
-    // var temp= { 
-    //   'A' : 3,
-    //   'B' : 1,
-    //   'C' : 2
-    // };
-    // var sortedKeys = temp.keys.toList(growable:false)
-    // ..sort((k1, k2) => temp[k1].compareTo(temp[k2]));
-    // LinkedHashMap sortedMap = new LinkedHashMap
-    //   .fromIterable(sortedKeys, key: (k) => k, value: (k) => temp[k]);
-
     final List<Widget> opciones = [];
     data.forEach( (opt) {
       var index = data.indexOf(opt);
@@ -82,16 +61,7 @@ class _MyCheckBoxListWidget2State extends State<MyCheckBoxListWidget2> {
           ),
         ),
       );
-      // final contTemp2 = LabeledCheckbox(
-      //   label: name,
-      //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      //   value: _isSelected[index],
-      //   onChanged: (bool newValue) {
-      //     setState(() {
-      //       _isSelected[index] = newValue;
-      //     });
-      //   },
-      // );
+
       opciones..add(contTemp);
               //..add(Divider());
     });

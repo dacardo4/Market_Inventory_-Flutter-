@@ -13,7 +13,6 @@ class ListComponent extends StatelessWidget {
 
   Widget _myList() {
     return FutureBuilder(
-      //future: productProvider.getData(),
       future: quantityProvider.getQuantityShoppingList(generalContext),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
