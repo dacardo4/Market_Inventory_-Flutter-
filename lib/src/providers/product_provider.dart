@@ -23,8 +23,9 @@ class _ProductProvider {
     return data;
   }
 
-  Future<Map<String, dynamic>> postProducts(BuildContext context, String productName, int idUser, int idCategory, int idSubcategory, int quantityInStock, int quantityToBuy) async {
+  Future<bool> postProducts(BuildContext context, String productName, int idUser, int idCategory, int idSubcategory, int quantityInStock, int quantityToBuy) async {
     generalContext = context;
+    bool postQtyOk = false, istOk = false;
     final answer = await http.post(
       localUrl,
       headers: <String, String>{
@@ -36,13 +37,11 @@ class _ProductProvider {
       }),
     );
     if (answer.statusCode == 200) {
+      istOk = true;
       postData = json.decode(answer.body);
-      quantityProvider.postQuantityData(generalContext, postData['id'], quantityInStock, quantityToBuy, idUser);
-    } else {
-      data = [];
-      showMyInformationAlert(generalContext, 'error');
-    }
-    return postData;
+      postQtyOk = await quantityProvider.postQuantityData(generalContext, postData['id'], quantityInStock, quantityToBuy, idUser);
+    } else showMyInformationAlert(generalContext, 'error');
+    return (postQtyOk && istOk) ? true : false;
   }
 }
 final productProvider = new _ProductProvider();

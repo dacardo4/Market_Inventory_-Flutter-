@@ -7,7 +7,6 @@ import 'package:market_inventory/src/utils/constants.dart';
 class _QuantityProvider {
   static const String localUrl = Constants.urlBack+'quantities';
   List<dynamic> data = [];
-  Map<String, dynamic> postData;
   BuildContext generalContext;
 
   Future<List<dynamic>> getAllQuantityData(BuildContext context) async {
@@ -32,8 +31,9 @@ class _QuantityProvider {
     return data;
   }
 
-  Future<Map<String, dynamic>> postQuantityData(BuildContext context, int idProduct, int quantityInStock, int quantityToBuy, int idUser) async {
+  Future<bool> postQuantityData(BuildContext context, int idProduct, int quantityInStock, int quantityToBuy, int idUser) async {
     generalContext = context;
+    bool itsOk = false;
     final answer = await http.post(
       localUrl,
       headers: <String, String>{
@@ -46,14 +46,9 @@ class _QuantityProvider {
         "idUser": idUser
       }),
     );
-    if (answer.statusCode == 200) {
-      postData = json.decode(answer.body);
-      showMyInformationAlert(generalContext, 'postProducts');
-    } else {
-      data = [];
-      showMyInformationAlert(generalContext, 'error');
-    }
-    return postData;
+    if (answer.statusCode == 200) itsOk = true;
+    else showMyInformationAlert(generalContext, 'error');
+    return itsOk;
   }
 }
 final quantityProvider = new _QuantityProvider();

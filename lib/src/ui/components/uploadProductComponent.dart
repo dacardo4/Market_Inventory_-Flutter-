@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market_inventory/src/providers/product_provider.dart';
+import 'package:market_inventory/src/utils/alerts.dart';
 
 class UploadProductComponent extends StatefulWidget {
   @override
@@ -19,15 +20,17 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
       padding: EdgeInsets.only(top: 80),
       width: MediaQuery.of(context).size.width,
       color: Colors.cyan,
-      child: Column(
-        children: <Widget>[
-          nameInput(),
-          tittleButtons('Cantidad en Stock'),
-          stockInput(),
-          tittleButtons('Cantidad a comprar'),
-          toBuyInput(),
-          actionButtons()
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            nameInput(),
+            tittleButtons('Cantidad en Stock'),
+            stockInput(),
+            tittleButtons('Cantidad a comprar'),
+            toBuyInput(),
+            actionButtons()
+          ],
+        ),
       ),
     );
   }
@@ -136,12 +139,27 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
       }
       break; 
     } 
-    setState(() => {} );
+    updateState();
   }
 
-  void _sendData() {
+  _sendData() async {
     if (_productName.text == '') print('VACIO!');
-    else productProvider.postProducts(generalContext, _productName.text, 1, 0, 0, _productInStock, _producToBuy);
+    else {
+      bool productSaved = await productProvider.postProducts(generalContext, _productName.text, 1, 0, 0, _productInStock, _producToBuy);
+      if (productSaved) cleanForm();
+    }
+  }
+
+  cleanForm() {
+    showMyInformationAlert(generalContext, 'postProducts');
+    _productName.text = '';
+    _productInStock = 0;
+    _producToBuy = 0;
+    updateState();
+  }
+
+  updateState() {
+    setState(() => {} );
   }
 
 }
