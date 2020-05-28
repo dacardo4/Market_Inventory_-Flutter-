@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:market_inventory/src/providers/quantity_provider.dart';
-import 'dart:collection';
 
 class MyCheckBoxListWidget2 extends StatefulWidget {
   MyCheckBoxListWidget2({Key key}) : super(key: key);
