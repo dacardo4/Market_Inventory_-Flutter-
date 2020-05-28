@@ -1,22 +1,30 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:market_inventory/src/providers/quantity_provider.dart';
+import 'package:market_inventory/src/utils/alerts.dart';
 import 'package:market_inventory/src/utils/constants.dart';
 
 class _ProductProvider {
   static const String localUrl = Constants.urlBack+'products';
   List<dynamic> data = [];
   Map<String, dynamic> postData;
+  BuildContext generalContext;
 
-  Future<List<dynamic>> getAllProducts() async {
+  Future<List<dynamic>> getAllProducts(BuildContext context) async {
+    generalContext = context;
     final answer = await http.get(localUrl);
     if (answer.statusCode == 200) data = json.decode(answer.body);
-    else  data = []; //print('Status Error no 200');
+    else {
+      data = [];
+      showMyInformationAlert(generalContext, 'error');
+    }
     return data;
   }
 
-  Future<Map<String, dynamic>> postProducts(String productName, int idUser, int idCategory, int idSubcategory, int quantityInStock, int quantityToBuy) async {
+  Future<Map<String, dynamic>> postProducts(BuildContext context, String productName, int idUser, int idCategory, int idSubcategory, int quantityInStock, int quantityToBuy) async {
+    generalContext = context;
     final answer = await http.post(
       localUrl,
       headers: <String, String>{
@@ -29,8 +37,11 @@ class _ProductProvider {
     );
     if (answer.statusCode == 200) {
       postData = json.decode(answer.body);
-      quantityProvider.postQuantityData(postData['id'], quantityInStock, quantityToBuy, idUser);
-    } else print('Status Error no 200');
+      quantityProvider.postQuantityData(generalContext, postData['id'], quantityInStock, quantityToBuy, idUser);
+    } else {
+      data = [];
+      showMyInformationAlert(generalContext, 'error');
+    }
     return postData;
   }
 }
