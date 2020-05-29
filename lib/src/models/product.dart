@@ -16,12 +16,18 @@ class Product {
     this.productName = productName; 
   }
 
-  Product(data) {
-    id = data['id'] ? data['id'] : null;
-    productName = data['productName'] ? data['productName'] : null;
-    idUser = data['idUser'] ? data['idUser'] : null;
-    idCategory = data['idCategory'] ? data['idCategory'] : null;
-    idSubcategory = data['idSubcategory'] ? data['idSubcategory'] : null;
-    quantities = data['quantities'] ? data['quantities'] : null;
+  Product({data}) {
+    id = data['id'] ?? null;
+    productName = data['productName'] ?? null;
+    idUser = data['idUser'] ?? null;
+    idCategory = data['idCategory'] ?? null;
+    idSubcategory = data['idSubcategory'] ?? null;
+    quantities = data['quantities'] ?? null;
+  }
+
+  factory Product.fromJson(Map<String, dynamic> data) {
+    return Product(
+      data : data,
+    );
   }
 }
