@@ -1,23 +1,31 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:market_inventory/src/models/quantity.dart';
 import 'package:market_inventory/src/utils/alerts.dart';
 import 'package:market_inventory/src/utils/constants.dart';
 
 class _QuantityProvider {
   static const String localUrl = Constants.urlBack+'quantities';
   List<dynamic> data = [];
+  List<Quantity> response = [];
   BuildContext generalContext;
 
-  Future<List<dynamic>> getAllQuantityData(BuildContext context) async {
+  Future<List<Quantity>> getAllQuantityData(BuildContext context) async {
     generalContext = context;
     final answer = await http.get(localUrl+'?filter={"include":"product"}');
-    if (answer.statusCode == 200) data = json.decode(answer.body);
+    if (answer.statusCode == 200) {
+      data = json.decode(answer.body);
+      data.forEach((element) {
+        var objet = Quantity.fromJson(element);
+        response.add(objet);
+      });
+    }
     else {
-      data = [];
+      response = [];
       showMyInformationAlert(generalContext, 'error');
     }
-    return data;
+    return response;
   }
 
   Future<List<dynamic>> getQuantityShoppingList(BuildContext context) async {
