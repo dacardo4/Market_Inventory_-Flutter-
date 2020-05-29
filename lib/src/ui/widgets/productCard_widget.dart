@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:market_inventory/src/models/quantity.dart';
 import 'package:market_inventory/src/ui/widgets/text_widget.dart';
 
 class ProductCard extends StatelessWidget {
-  final String nameProduct;
-  final int quantityStockProduct;
-  final int quantityBuyProduct;
-  ProductCard({this.nameProduct, this.quantityStockProduct, this.quantityBuyProduct});
+  Quantity quantityProduct;
+  // final String nameProduct;
+  // final int quantityStockProduct;
+  // final int quantityBuyProduct;
+  ProductCard({this.quantityProduct});
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +62,10 @@ class ProductCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            genericText(nameProduct, 0xff473bf0, FontWeight.w900, 40.0),
+            genericText(quantityProduct.product.productName, 0xff473bf0, FontWeight.w900, 40.0),
             Text(''),
-            genericText('Stock: $quantityStockProduct', 0xff1e96fc, FontWeight.normal, 20.0),
-            genericText('Comprar: $quantityBuyProduct', 0xff1e96fc, FontWeight.normal, 20.0),
+            genericText('Stock: ${quantityProduct.quantityInStock}', 0xff1e96fc, FontWeight.normal, 20.0),
+            genericText('Comprar: ${quantityProduct.quantityToBuy}', 0xff1e96fc, FontWeight.normal, 20.0),
           ],
         ),
       ),

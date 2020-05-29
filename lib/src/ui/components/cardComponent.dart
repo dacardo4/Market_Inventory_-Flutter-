@@ -24,14 +24,10 @@ class CardComponent extends StatelessWidget {
     );
   }
 
-  List<Widget> _itemsList( List<dynamic> data, BuildContext context ) {
+  List<Widget> _itemsList( List<dynamic> inventory, BuildContext context ) {
     final List<Widget> opciones = [];
-    data.forEach( (opt) {
-      final widgetTemp = ProductCard(
-        nameProduct: opt['product']['productName'],
-        quantityStockProduct: opt['quantityInStock'],
-        quantityBuyProduct: opt['quantityToBuy']
-      );
+    inventory.forEach( (quantityProduct) {
+      final widgetTemp = ProductCard(quantityProduct: quantityProduct);
       opciones..add(widgetTemp)
               ..add(Divider());
     });
