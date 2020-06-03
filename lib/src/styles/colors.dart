@@ -1,7 +1,13 @@
-class Colors {
-  static const int textTitle = 0xff1e96fc;
-  static const int textSubtitle = 0xffffa9e7;
-  static const int textGeneral = 0xff473bf0;
-  static const int backgroundApp = 0xffff84e8;
-  static const int backgroundCard = 0xff414361;
+import 'package:flutter/material.dart';
+
+class MyColors {
+  static const Color bottomNavigationBarBackgroundColor = Color(0xFF001A49);
+  static const Color bottomNavigationBarUnselectedItemColor = Color(0xFF001A49);
+  static const Color widgetTextTitle = Color(0xff473bf0);
+  static const Color widgetTextSubtitle = Color(0xff1e96fc);
+  static const Color materialAppBackground = Colors.blue;
+  static Color containerBackgroud = Colors.amber[100];
+  static const Color containerBackgroud2 = Colors.cyan;
+  static Color containerBackgroud3 = Colors.blue.withOpacity(0.5);
+  static Color generalWhite = Colors.white;
 }
