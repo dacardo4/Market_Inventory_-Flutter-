@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:market_inventory/src/ui/components/cardComponent.dart';
-import 'package:market_inventory/src/ui/components/uploadProductComponent.dart';
+import 'package:market_inventory/src/ui/components/card_component.dart';
+import 'package:market_inventory/src/ui/components/uploadProduct_component.dart';
 import 'package:market_inventory/src/ui/widgets/checkboxlist2_widget.dart';
 import 'package:market_inventory/src/ui/widgets/checkboxlist_widget.dart';
 
