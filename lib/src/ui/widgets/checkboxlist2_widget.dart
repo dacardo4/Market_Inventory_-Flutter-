@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market_inventory/src/providers/quantity_provider.dart';
+import 'package:market_inventory/src/styles/colors.dart';
 
 class MyCheckBoxListWidget2 extends StatefulWidget {
   MyCheckBoxListWidget2({Key key}) : super(key: key);
@@ -48,7 +49,7 @@ class _MyCheckBoxListWidget2State extends State<MyCheckBoxListWidget2> {
         key: Key(index.toString()),
         child: Container(
           height: 50,
-          color: Colors.amber[100],
+          color: MyColors.containerBackgroud,
           child: Center(
             child: Text(
               "$name",

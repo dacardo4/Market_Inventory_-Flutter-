@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market_inventory/src/styles/colors.dart';
 import 'package:market_inventory/src/ui/pages/homa_page.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Inventory Market',
       debugShowCheckedModeBanner: false,
       home: HomePage(),
-      color: Colors.blue,
+      color: MyColors.materialAppBackground,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market_inventory/src/styles/colors.dart';
 import 'package:market_inventory/src/ui/components/card_component.dart';
 import 'package:market_inventory/src/ui/components/uploadProduct_component.dart';
 import 'package:market_inventory/src/ui/widgets/checkboxlist2_widget.dart';
@@ -26,12 +27,12 @@ class _HomeState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFF001A49),
+        backgroundColor: MyColors.bottomNavigationBarBackgroundColor,
         onTap: onTabTapped,
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
-        unselectedItemColor: Color(0xFF667EAF),
-        selectedItemColor: Colors.white,
+        unselectedItemColor: MyColors.bottomNavigationBarUnselectedItemColor,
+        selectedItemColor: MyColors.generalWhite,
         selectedFontSize: 10,
         unselectedFontSize: 10,
         items: [

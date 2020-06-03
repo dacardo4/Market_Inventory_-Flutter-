@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market_inventory/src/providers/quantity_provider.dart';
+import 'package:market_inventory/src/styles/colors.dart';
 
 class ListComponent extends StatelessWidget {
   BuildContext generalContext;
@@ -31,7 +32,7 @@ class ListComponent extends StatelessWidget {
       name = opt['quantityToBuy'].toString() + ' - ' + opt['product']['productName'];
       final contTemp = Container(
         height: 50,
-        color: Colors.amber[100],
+        color: MyColors.containerBackgroud,
         child: Center(
           child: Text(
             "$name",

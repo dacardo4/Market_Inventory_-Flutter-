@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market_inventory/src/models/quantity.dart';
+import 'package:market_inventory/src/styles/colors.dart';
 import 'package:market_inventory/src/ui/widgets/text_widget.dart';
 
 class ProductCard extends StatelessWidget {
@@ -62,10 +63,10 @@ class ProductCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            genericText(quantityProduct.product.productName, 0xff473bf0, FontWeight.w900, 40.0),
+            genericText(quantityProduct.product.productName, MyColors.widgetTextTitle, FontWeight.w900, 40.0),
             Text(''),
-            genericText('Stock: ${quantityProduct.quantityInStock}', 0xff1e96fc, FontWeight.normal, 20.0),
-            genericText('Comprar: ${quantityProduct.quantityToBuy}', 0xff1e96fc, FontWeight.normal, 20.0),
+            genericText('Stock: ${quantityProduct.quantityInStock}', MyColors.widgetTextSubtitle, FontWeight.normal, 20.0),
+            genericText('Comprar: ${quantityProduct.quantityToBuy}', MyColors.widgetTextSubtitle, FontWeight.normal, 20.0),
           ],
         ),
       ),

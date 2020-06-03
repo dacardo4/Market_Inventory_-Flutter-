@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market_inventory/src/providers/product_provider.dart';
+import 'package:market_inventory/src/styles/colors.dart';
 import 'package:market_inventory/src/utils/alerts.dart';
 
 class UploadProductComponent extends StatefulWidget {
@@ -19,7 +20,7 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
     return Container(
       padding: EdgeInsets.only(top: 80),
       width: MediaQuery.of(context).size.width,
-      color: Colors.cyan,
+      color: MyColors.containerBackgroud2,
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -38,7 +39,7 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
   Widget nameInput() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-      color: Colors.white,
+      color: MyColors.generalWhite,
       width: MediaQuery.of(generalContext).size.width,
       child: TextField(
         controller: _productName,
@@ -84,7 +85,7 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
     return RawMaterialButton(
       onPressed: (){ _updateData(typebtn); },
       elevation: 2.0,
-      fillColor: Colors.white,
+      fillColor: MyColors.generalWhite,
       child: Icon(
         icon,
         size: 35.0,
