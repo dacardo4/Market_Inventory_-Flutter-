@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:market_inventory/src/models/quantity.dart';
 import 'package:market_inventory/src/styles/colors.dart';
+import 'package:market_inventory/src/ui/components/updateProduct_component.dart';
 import 'package:market_inventory/src/ui/widgets/text_widget.dart';
 
 class ProductCard extends StatelessWidget {
   Quantity quantityProduct;
-  // final String nameProduct;
-  // final int quantityStockProduct;
-  // final int quantityBuyProduct;
+  BuildContext generalContext;
   ProductCard({this.quantityProduct});
 
   @override
   Widget build(BuildContext context) {
+    generalContext = context;
     return Card(
       elevation: 10.0,
       shape: RoundedRectangleBorder(
@@ -82,7 +82,10 @@ class ProductCard extends StatelessWidget {
           child: Text('Editar Alert'),
         ),
         FlatButton(
-          onPressed: () {},
+          onPressed: () {
+            print(quantityProduct);
+            Navigator.of(generalContext).push(MaterialPageRoute(builder: (generalContext) => UpdateProductComponent(quantityProduct: quantityProduct)));
+          },
           child: Icon(Icons.edit),
         ),
       ],
