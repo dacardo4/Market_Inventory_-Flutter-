@@ -33,8 +33,9 @@ class _UpdateProductComponentState extends State<UpdateProductComponent> {
       _productNameStr = quantityProduct2.product.productName;
       updated = true;
     }
-    return Material(
-      child: Container(
+    return Scaffold(
+      appBar: AppBar(title: Text('UpdatePruduct')),
+      body: Container(
         padding: EdgeInsets.only(top: 80),
         width: MediaQuery.of(context).size.width,
         child: SingleChildScrollView(

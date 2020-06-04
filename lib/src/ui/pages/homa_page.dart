@@ -26,6 +26,7 @@ class _HomeState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Home Screen')),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: MyColors.bottomNavigationBarBackgroundColor,
         onTap: onTabTapped,
