@@ -25,24 +25,8 @@ class Quantity {
   
   @override
   String toString() {
-    String dataToPrint = '{id: $id, idProduct: $idProduct, quantityInStock: $quantityInStock, quantityToBuy: $quantityToBuy, idUser: $idUser}\n';
+    String dataToPrint = '{id: $id, idProduct: $idProduct, quantityInStock: $quantityInStock, quantityToBuy: $quantityToBuy, idUser: $idUser, product $product}';//\n
+    //dataToPrint += product ?? '';
     return dataToPrint;
-  }
-}
-
-class Post {
-  final int userId2;
-  final String title;
-  final String body;
-
-  Post({this.userId2, this.title, this.body});
-
-  factory Post.fromJson(Map<String, dynamic> json) {
-    return Post(
-      //userId: json['userId'],
-      userId2: json['id'],
-      title: json['title'],
-      body: json['body'],
-    );
   }
 }

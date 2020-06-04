@@ -30,4 +30,10 @@ class Product {
       data : data,
     );
   }
+
+  @override
+  String toString() {
+    String dataToPrint = '{id: $id, productName: $productName, idUser: $idUser, idCategory: $idCategory, idSubcategory: $idSubcategory}';//\n
+    return dataToPrint;
+  }
 }
