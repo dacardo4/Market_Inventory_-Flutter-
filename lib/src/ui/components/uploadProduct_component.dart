@@ -144,7 +144,7 @@ class _UploadProductComponentState extends State<UploadProductComponent> {
   }
 
   _sendData() async {
-    if (_productName.text == '') print('VACIO!');
+    if (_productName.text == '') showMyInformationAlert(generalContext, 'emptyName');
     else {
       bool productSaved = await productProvider.postProducts(generalContext, _productName.text, 1, 0, 0, _productInStock, _producToBuy);
       if (productSaved) cleanForm();
