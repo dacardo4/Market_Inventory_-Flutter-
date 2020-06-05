@@ -43,5 +43,40 @@ class _ProductProvider {
     } else showMyInformationAlert(generalContext, 'error');
     return (postQtyOk && istOk) ? true : false;
   }
+
+  Future<bool> patchProductsAndQuantity(BuildContext context, Map<String, dynamic> dataProduct, Map<String, dynamic> dataQuantity) async {
+    generalContext = context;
+    bool postQtyOk = false, istOk = false;
+    final answer = await http.patch(
+      localUrl,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(dataProduct),
+    );
+    if (answer.statusCode == 200) {
+      istOk = true;
+      postData = json.decode(answer.body);
+      postQtyOk = await quantityProvider.patchQuantity(generalContext, dataQuantity);
+    } else showMyInformationAlert(generalContext, 'error');
+    return (postQtyOk && istOk) ? true : false;
+  }
+
+  Future<bool> patchProducts(BuildContext context, Map<String, dynamic> dataProduct) async {
+    generalContext = context;
+    bool istOk = false;
+    final answer = await http.patch(
+      localUrl,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(dataProduct),
+    );
+    if (answer.statusCode == 200) {
+      istOk = true;
+      postData = json.decode(answer.body);
+    } else showMyInformationAlert(generalContext, 'error');
+    return istOk;
+  }
 }
 final productProvider = new _ProductProvider();

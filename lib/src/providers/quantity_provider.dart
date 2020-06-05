@@ -58,5 +58,20 @@ class _QuantityProvider {
     else showMyInformationAlert(generalContext, 'error');
     return itsOk;
   }
+
+  Future<bool> patchQuantity(BuildContext context, Map<String, dynamic> dataQuantity) async {
+    generalContext = context;
+    bool itsOk = false;
+    final answer = await http.patch(
+      localUrl,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(dataQuantity),
+    );
+    if (answer.statusCode == 200) itsOk = true;
+    else showMyInformationAlert(generalContext, 'error');
+    return itsOk;
+  }
 }
 final quantityProvider = new _QuantityProvider();
