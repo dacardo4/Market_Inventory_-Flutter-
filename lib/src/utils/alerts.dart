@@ -14,9 +14,17 @@ showMyInformationAlert(BuildContext context, String from) {
       data['tittle'] = 'Producto Creado';
       data['info01'] = 'El producto se ha creado con exito.';
     } break;
-    case 'newCase': {
-      data['tittle'] = 'Producto Creado';
-      data['info01'] = 'El producto se ha creado con exito.';
+    case 'patchProducts': {
+      data['tittle'] = 'Producto Actualizado';
+      data['info01'] = 'El producto se ha actualizado con exito.';
+    } break;
+    case 'emptyName': {
+      data['tittle'] = 'Error';
+      data['info01'] = 'El nombre no puede estar vacio.';
+    } break;
+    case 'sameData': {
+      data['tittle'] = 'Alerta';
+      data['info01'] = 'No se detectaron cambios.';
     } break;
   }
   myInformationAlert(context, data);
@@ -41,6 +49,41 @@ Future<void> myInformationAlert(BuildContext context, Map<String,String> data) a
             child: Text('Ok'),
             onPressed: () {
               Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Future<String> myGetInputDialog(BuildContext context, String actualProductName) async {
+  TextEditingController controlador = TextEditingController();
+  controlador.text = actualProductName;
+  return showDialog<String>(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Ingresa el nuevo nombre'),
+        content: Row(
+          children: <Widget>[
+            Expanded(
+                child: TextField(
+                  controller: controlador,
+                  autofocus: true,
+                  decoration: InputDecoration(
+                    labelText: 'Nombre del Producto'
+                  ),
+              )
+            )
+          ],
+        ),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('Ok'),
+            onPressed: () {
+              Navigator.of(context).pop(controlador.text);
             },
           ),
         ],
